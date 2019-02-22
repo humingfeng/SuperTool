@@ -4,17 +4,31 @@
 			<el-col :span="10" class="logo" :class="collapsed?'logo-collapse-width':'logo-width'">
 				{{collapsed?'':sysName}}
 			</el-col>
-			<el-col :span="10">
-				<div class="tools" @click.prevent="collapse">
-					<i class="fa fa-align-justify"></i>
-				</div>
-			</el-col>
-			<el-col :span="4" class="userinfo">
-
+			<el-col :span="14" :offset="3" class="menuInfo">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+          <el-menu-item index="1">首页</el-menu-item>
+          <el-submenu index="2">
+            <template slot="title">我的工作台</template>
+            <el-menu-item index="2-1">选项1</el-menu-item>
+            <el-menu-item index="2-2">选项2</el-menu-item>
+            <el-menu-item index="2-3">选项3</el-menu-item>
+            <el-submenu index="2-4">
+              <template slot="title">选项4</template>
+              <el-menu-item index="2-4-1">选项1</el-menu-item>
+              <el-menu-item index="2-4-2">选项2</el-menu-item>
+              <el-menu-item index="2-4-3">选项3</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+          <el-menu-item index="3" disabled>消息中心</el-menu-item>
+        </el-menu>
 			</el-col>
 		</el-col>
 		<el-col :span="24" class="main">
         <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
+          <el-radio-group v-model="collapsed" style="margin-bottom: 20px;">
+            <el-radio-button :label="false">展开</el-radio-button>
+            <el-radio-button :label="true">收起</el-radio-button>
+          </el-radio-group>
           <!--导航菜单-->
           <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
              unique-opened router v-show="!collapsed">
@@ -72,6 +86,8 @@
 				collapsed:false,
 				sysUserName: '',
 				sysUserAvatar: '',
+        activeIndex: '1',
+        activeIndex2: '1',
 				form: {
 					name: '',
 					region: '',
@@ -96,6 +112,9 @@
 			},
 			handleselect: function (a, b) {
 			},
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+      },
 			//折叠导航栏
 			collapse:function(){
 				this.collapsed=!this.collapsed;
@@ -127,32 +146,18 @@
 		width: 100%;
 		.header {
 			height: 60px;
-			line-height: 60px;
-			background: $color-primary;
+      border-color: rgb(230, 230, 230);
+      border-right-width: 1px;
+      border-right-style: solid;
+			//background: $color-primary;
 			color:#fff;
-			.userinfo {
-				text-align: right;
-				padding-right: 35px;
-				float: right;
-				.userinfo-inner {
-					cursor: pointer;
-					color:#fff;
-					img {
-						width: 40px;
-						height: 40px;
-						border-radius: 20px;
-						margin: 10px 0px 10px 10px;
-						float: right;
-					}
-				}
-			}
 			.logo {
-				//width:230px;
+				/*width:230px;*/
 				height:60px;
 				font-size: 22px;
 				padding-left:20px;
 				padding-right:20px;
-				border-color: rgba(238,241,146,0.3);
+				border-color: rgb(230, 230, 230);
 				border-right-width: 1px;
 				border-right-style: solid;
 				img {
@@ -161,9 +166,12 @@
 					margin: 10px 10px 10px 18px;
 				}
 				.txt {
-					color:#fff;
+					color: #1e1310;
 				}
 			}
+      .menuInfo {
+
+      }
 			.logo-width{
 				width:230px;
 			}
