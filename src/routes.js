@@ -25,6 +25,15 @@ let routes = [
     },
     //{ path: '/main', component: Main },
     {
+      path: '/',
+      component: Home,
+      name: '首页',
+      leaf: true,//只有一个节点
+      children: [
+        { path: '/main', component: Main, name: '首页', hidden: true }
+      ]
+    },
+    {
         path: '/',
         component: Home,
         name: '导航一',
