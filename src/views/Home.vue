@@ -2,7 +2,8 @@
 	<el-row class="container">
 		<el-col :span="24" class="header">
 			<el-col :span="10" class="logo" :class="isCollapse?'logo-collapse-width':'logo-width'">
-				{{isCollapse?'':sysName}}
+        <img src="../assets/home.png">
+				<!--{{isCollapse?'':sysName}}-->
 			</el-col>
 			<el-col :span="14" :offset="3" class="menuInfo">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
@@ -59,6 +60,11 @@
           </div>
         </section>
 		</el-col>
+
+    <el-col :span="24" class="footer">
+      <span class="copyright-text"><span>©2019&nbsp;HuMingfeng&nbsp;&nbsp;&nbsp;</span><a href="https://github.com/humingfeng" target="_blank">GitHub</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://blog.csdn.net/qq_22260641" target="_blank">博客地址</a>&nbsp;</span>
+    </el-col>
+
 	</el-row>
 </template>
 
@@ -67,7 +73,7 @@
 		data() {
 			return {
 				sysName:'SuperTool',
-        isCollapse: true,
+        isCollapse: false,
 				sysUserName: '',
 				sysUserAvatar: '',
         activeIndex: '1',
@@ -145,9 +151,9 @@
 				border-right-width: 1px;
 				border-right-style: solid;
 				img {
-					width: 40px;
-					float: left;
-					margin: 10px 10px 10px 18px;
+          width: 199px;
+          float: right;
+          margin: 10px 0px 0px 0px;
 				}
 				.txt {
 					color: #1e1310;
@@ -158,6 +164,8 @@
       }
 			.logo-width{
 				width:230px;
+        color: blue;
+        text-align: center;
 			}
 			.logo-collapse-width{
 				width:60px
@@ -237,5 +245,20 @@
 				}
 			}
 		}
+
+    .footer {
+      width:100%;
+      text-align: center;
+      position:fixed;
+      bottom:0;
+      height: 20px;
+      padding-left:20px;
+      padding-right:20px;
+      border-color: rgb(230, 230, 230);
+      border-right-width: 1px;
+      border-right-style: solid;
+      background-color: #409eff;
+      color:#fff;
+    }
 	}
 </style>
