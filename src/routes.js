@@ -25,18 +25,10 @@ let routes = [
     },
     //{ path: '/main', component: Main },
     {
-      path: '/',
-      component: Home,
-      name: '首页',
-      leaf: true,//只有一个节点
-      children: [
-        { path: '/main', component: Main, name: '首页', hidden: true }
-      ]
-    },
-    {
         path: '/',
         component: Home,
         name: '导航一',
+        index:'2-1',
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/main', component: Main, name: '主页', hidden: true },
@@ -49,6 +41,7 @@ let routes = [
         path: '/',
         component: Home,
         name: '导航二',
+        index:'2-2',
         iconCls: 'fa fa-id-card-o',
         children: [
             { path: '/page4', component: Page4, name: '页面4' },
@@ -62,6 +55,9 @@ let routes = [
         iconCls: 'fa fa-address-card',
         leaf: true,//只有一个节点
         children: [
+            { path: '/jsonToJavaBean', component: Page6, name: '导航三' },
+            { path: '/page6', component: Page6, name: '导航三' },
+            { path: '/page6', component: Page6, name: '导航三' },
             { path: '/page6', component: Page6, name: '导航三' }
         ]
     },

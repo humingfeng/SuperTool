@@ -7,13 +7,21 @@
 			</el-col>
 			<el-col :span="14" :offset="3" class="menuInfo">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
-            <el-submenu :index="index+''" v-if="!item.leaf">
-              <template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
-              <el-menu-item v-for="child in item.children" :index="child.path" :key="child.path" v-if="!child.hidden">{{child.name}}</el-menu-item>
+          <el-menu-item index="1">首页</el-menu-item>
+          <el-submenu index="2">
+            <template slot="title">开发工具</template>
+            <el-menu-item index="2-1">实体生成</el-menu-item>
+            <el-menu-item index="2-2">选项2</el-menu-item>
+            <el-menu-item index="2-3">选项3</el-menu-item>
+            <el-submenu index="2-4">
+              <template slot="title">选项4</template>
+              <el-menu-item index="2-4-1">选项1</el-menu-item>
+              <el-menu-item index="2-4-2">选项2</el-menu-item>
+              <el-menu-item index="2-4-3">选项3</el-menu-item>
             </el-submenu>
-            <el-menu-item v-if="item.leaf&&item.children.length>0" :index="item.children[0].path"><i :class="item.iconCls"></i>{{item.children[0].name}}</el-menu-item>
-          </template>
+          </el-submenu>
+          <el-menu-item index="3" disabled>消息中心</el-menu-item>
+          <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
         </el-menu>
 			</el-col>
 		</el-col>
@@ -26,7 +34,7 @@
           <!--导航菜单-->
           <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
              unique-opened router :collapse="isCollapse">
-            <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
+            <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden && item.index == initPath">
               <el-submenu :index="index+''" v-if="!item.leaf">
                 <template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
                 <el-menu-item v-for="child in item.children" :index="child.path" :key="child.path" v-if="!child.hidden">{{child.name}}</el-menu-item>
@@ -66,11 +74,11 @@
 		data() {
 			return {
 				sysName:'SuperTool',
+        initPath:'2-1',
         isCollapse: false,
 				sysUserName: '',
 				sysUserAvatar: '',
         activeIndex: '1',
-        activeIndex2: '1',
 				form: {
 					name: '',
 					region: '',
@@ -97,6 +105,7 @@
 			},
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+        this.initPath = keyPath[1];
       },
 			// //折叠导航栏
 			// collapse:function(){
