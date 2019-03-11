@@ -1,25 +1,27 @@
 <template>
   <div>
-    <el-row>
-      <el-col :span="12" class="button-change">
-        <el-button type="primary">Java</el-button>
-        <el-button type="info" disabled>待续</el-button>
-      </el-col>
-    </el-row>
+    <div>
+      <el-radio-group v-model="radio" class="radio-change" v-on:change="changeRadio">
+        <el-radio-button label="Java"></el-radio-button>
+        <el-radio-button label="C#"></el-radio-button>
+        <el-radio-button label="待续" :disabled="true"></el-radio-button>
+      </el-radio-group>
+    </div>
     <el-row class="demo-autocomplete">
       <el-col :span="12">
         <el-input
           type="textarea"
-          :autosize="{ minRows: 20, maxRows: 30}"
+          :autosize="{ minRows: 20, maxRows: 20}"
           placeholder="请输入内容，自动转换！"
           v-model="textarea1"
-          class="inputQuery">
+          class="inputQuery"
+          v-on:input="changeJson">
         </el-input>
       </el-col>
       <el-col :span="12">
         <el-input
           type="textarea"
-          :autosize="{ minRows: 20, maxRows: 30}"
+          :autosize="{ minRows: 20, maxRows: 20}"
           placeholder="结果"
           v-model="textarea2"
           class="inputResult">
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+  import {extractJson ,extractJavaJson,jsonChilds} from '../../common/js/common.js';
   export default {
     name: "jsonPage",
     data() {
@@ -37,16 +40,11 @@
         restaurants: [],
         state1: '',
         textarea1: '',
-        textarea2: ''
+        textarea2: '',
+        radio: 'Java'
       };
     },
     methods: {
-      querySearch(queryString, cb) {
-        var restaurants = this.restaurants;
-        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
-        // 调用 callback 返回建议列表的数据
-        cb(results);
-      },
       createFilter(queryString) {
         return (restaurant) => {
           return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
@@ -54,17 +52,58 @@
       },
       handleSelect(item) {
         console.log(item);
+      },
+      changeJson() {
+        if(this.textarea1 != '') {
+          var obj = eval("(" + this.textarea1 + ")");
+          if (this.radio == "C#") {
+            var sb = extractJson("Root", obj);
+            while (jsonChilds != null && jsonChilds.length > 0) {
+              var item = jsonChilds.pop();
+              sb += "\r\n\r\n" + extractJson(item.name, item.value);
+            }
+          }else if (this.radio == "Java") {
+            var sb = extractJavaJson("Root", obj);
+            while (jsonChilds != null && jsonChilds.length > 0) {
+              var item = jsonChilds.pop();
+              sb += "\r\n\r\n" + extractJavaJson(item.name, item.value);
+            };
+          }
+          this.textarea2 = sb;
+        }else {
+          this.textarea2 = "";
+        }
+      },
+      changeRadio() {
+        if(this.textarea1 != '') {
+          var obj = eval("(" + this.textarea1 + ")");
+          if (this.radio == "C#") {
+            var sb = extractJson("Root", obj);
+            while (jsonChilds != null && jsonChilds.length > 0) {
+              var item = jsonChilds.pop();
+              sb += "\r\n\r\n" + extractJson(item.name, item.value);
+            }
+          }else if (this.radio == "Java") {
+            var sb = extractJavaJson("Root", obj);
+            while (jsonChilds != null && jsonChilds.length > 0) {
+              var item = jsonChilds.pop();
+              sb += "\r\n\r\n" + extractJavaJson(item.name, item.value);
+            };
+          }
+          this.textarea2 = sb;
+        }else {
+          this.textarea2 = "";
+        }
       }
     },
     mounted() {
-      this.restaurants = this.loadAll();
     }
   }
 </script>
 
 <style scoped>
 
-  .button-change {
+  .radio-change {
     position:relative;
     top:20px;
     left: 20px;
