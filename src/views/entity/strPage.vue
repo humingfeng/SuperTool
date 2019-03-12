@@ -34,7 +34,7 @@
 <script>
   import {getFieldType,getJavaFieldType,getJavaEntity,getJavaPropEntity} from '../../common/js/common.js';
   export default {
-    name: "xmlPage",
+    name: "strPage",
     data() {
       return {
         restaurants: [],
@@ -55,41 +55,42 @@
       },
       changeJson() {
         if(this.textarea1 != '') {
+
           var array = this.textarea1.split(/,|，/);
           if (array != null && array.length > 0) {
-              var cate = this.radio;
-              var sb = "public class Root";
-              sb += "\r\n{";
-              var props = [];
-              for (var i = 0; i < array.length; i++) {
-                var item = array[i];
-                var name = item;
-                var type = "string";
-                if (/(\w+)\((\w)+\)/.test(item)) {
-                  var t = /(\w+)\((\w)+\)/.exec(item);
-                  name = t[1]
-                  if (cate == "C#") {
-                    type = getFieldType(t[2]);
-                  } else if (cate == "Java") {
-                    type = getJavaFieldType(t[2]);
-                  }
-                }
+            var cate = this.radio;
+            var sb = "public class Root";
+            sb += "\r\n{";
+            var props = [];
+            for (var i = 0; i < array.length; i++) {
+              var item = array[i];
+              var name = item;
+              var type = "string";
+              if (/(\w+)\((\w)+\)/.test(item)) {
+                var t = /(\w+)\((\w)+\)/.exec(item);
+                name = t[1]
                 if (cate == "C#") {
-                  sb += ((i > 0 ? "\r\n" : "") + "\r\n\tpublic " + type + " " + name + " { get; set; }");
+                  type = getFieldType(t[2]);
                 } else if (cate == "Java") {
-                  if (type == "string") {
-                    type = "String";
-                  }
-                  sb += (i > 0 ? "\r\n" : "") + getJavaEntity(type, name);
-                  props.push({"type": type, "name": name});
+                  type = getJavaFieldType(t[2]);
                 }
               }
-              for (var p in props) {
-                sb += getJavaPropEntity(props[p].type, props[p].name);
+              if (cate == "C#") {
+                sb += ((i > 0 ? "\r\n" : "") + "\r\n\tpublic " + type + " " + name + " { get; set; }");
+              } else if (cate == "Java") {
+                if (type == "string") {
+                  type = "String";
+                }
+                sb += (i > 0 ? "\r\n" : "") + getJavaEntity(type, name);
+                props.push({"type": type, "name": name});
               }
-              sb += "\r\n}";
+            }
+            for (var p in props) {
+              sb += getJavaPropEntity(props[p].type, props[p].name);
+            }
+            sb += "\r\n}";
 
-              this.textarea2 = sb;
+            this.textarea2 = sb;
           }
         }else {
           this.textarea2 = "";

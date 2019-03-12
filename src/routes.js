@@ -6,6 +6,7 @@ import Table from './views/nav1/Table.vue'
 import Form from './views/nav1/Form.vue'
 import user from './views/nav1/user.vue'
 import jsonPage from './views/entity/jsonPage.vue'
+import strPage from './views/entity/strPage.vue'
 import xmlPage from './views/entity/xmlPage.vue'
 import Page5 from './views/nav2/Page5.vue'
 import Page6 from './views/nav3/Page6.vue'
@@ -32,10 +33,9 @@ let routes = [
         index:'2-1',
         iconCls: 'el-icon-message',//图标样式class
         children: [
-            { path: '/jsonPage', component: jsonPage, name: 'json生成实体' },
-            { path: '/xmlPage', component: xmlPage, name: 'xml生成实体' },
-            { path: '/form', component: Form, name: 'Form' },
-            { path: '/user', component: user, name: '列表' },
+            { path: '/jsonPage', component: jsonPage, name: 'json生成实体' ,isReadOnly: false},
+            { path: '/strPage', component: strPage, name: '字符串生成实体' ,isReadOnly: false},
+            { path: '/xmlPage', component: xmlPage, name: 'xml生成实体' ,isReadOnly: true},
         ]
     },
     {
