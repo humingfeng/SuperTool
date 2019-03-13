@@ -2,13 +2,12 @@ import Login from './views/Login.vue'
 import NotFound from './views/404.vue'
 import Home from './views/Home.vue'
 import Main from './views/Main.vue'
-import Table from './views/nav1/Table.vue'
-import Form from './views/nav1/Form.vue'
-import user from './views/nav1/user.vue'
 import jsonPage from './views/entity/jsonPage.vue'
 import strPage from './views/entity/strPage.vue'
 import xmlPage from './views/entity/xmlPage.vue'
-import Page5 from './views/nav2/Page5.vue'
+import urlEncodePage from './views/encode/urlEncodePage.vue'
+import urlDecodePage from './views/encode/urlDecodePage.vue'
+import htmlEncodePage from './views/encode/htmlEncodePage.vue'
 import Page6 from './views/nav3/Page6.vue'
 import echarts from './views/charts/echarts.vue'
 
@@ -41,11 +40,13 @@ let routes = [
     {
         path: '/',
         component: Home,
-        name: '导航二',
+        name: '编码转换',
         index:'2-2',
         iconCls: 'fa fa-id-card-o',
         children: [
-            { path: '/page5', component: Page5, name: '页面5' }
+            { path: '/urlEncodePage', component: urlEncodePage, name: 'URL_ENCODE' },
+            { path: '/urlDecodePage', component: urlDecodePage, name: 'URL_DECODE' },
+            { path: '/htmlEncodePage', component: htmlEncodePage, name: 'HTML_ENCODE' },
         ]
     },
     {

@@ -1,11 +1,21 @@
 <template>
   <div>
     <div>
-      <el-radio-group v-model="radio" class="radio-change" v-on:change="changeRadio">
-        <el-radio-button label="Java"></el-radio-button>
-        <el-radio-button label="C#"></el-radio-button>
-        <el-radio-button label="待续" :disabled="true"></el-radio-button>
-      </el-radio-group>
+      <el-row class="demo-autocomplete">
+        <el-col :span="12">
+          <el-radio-group v-model="radio" class="radio-change" v-on:change="changeRadio">
+            <el-radio-button label="Java"></el-radio-button>
+            <el-radio-button label="C#"></el-radio-button>
+            <el-radio-button label="待续" :disabled="true"></el-radio-button>
+          </el-radio-group>
+        </el-col>
+        <el-col :span="12" style="align-content: center">
+          <el-alert style="top: 19px;right: 200px"
+            type="success"
+            description="注：括号中字符表示类型，i->int,s->string,d->DateTime,b->bool,如果没有括号，默认为string类型,例如ID(i),Name(s),Age(i),Birthday(d),Married(b),Address">
+          </el-alert>
+        </el-col>
+      </el-row>
     </div>
     <el-row class="demo-autocomplete">
       <el-col :span="12">
