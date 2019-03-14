@@ -1,6 +1,6 @@
 # SuperTool
 
-> A Vue.js project
+> A Vue and Element project
 
 #### 项目说明
 该项目是一个基于VUE和element-ui的前端项目，主要用于提供程序员专用的超级工具箱包括如下模块
