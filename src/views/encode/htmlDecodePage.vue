@@ -25,9 +25,9 @@
 </template>
 
 <script>
-  import {htmlencode} from '../../common/js/common.js';
+  import {htmldecode} from '../../common/js/common.js';
   export default {
-    name: "htmlEncodePage",
+    name: "htmlDecodePage",
     data() {
       return {
         restaurants: [],
@@ -47,7 +47,7 @@
       },
       changeJson() {
         if(this.textarea1 != '') {
-          this.textarea2 = htmlencode(this.textarea1);
+          this.textarea2 = htmldecode(this.textarea1);
         }else {
           this.textarea2 = "";
         }

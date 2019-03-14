@@ -8,6 +8,9 @@ import xmlPage from './views/entity/xmlPage.vue'
 import urlEncodePage from './views/encode/urlEncodePage.vue'
 import urlDecodePage from './views/encode/urlDecodePage.vue'
 import htmlEncodePage from './views/encode/htmlEncodePage.vue'
+import htmlDecodePage from './views/encode/htmlDecodePage.vue'
+import asciiPage from './views/encode/asciiPage.vue'
+import unicodePage from './views/encode/unicodePage.vue'
 import Page6 from './views/nav3/Page6.vue'
 import echarts from './views/charts/echarts.vue'
 
@@ -47,6 +50,9 @@ let routes = [
             { path: '/urlEncodePage', component: urlEncodePage, name: 'URL_ENCODE' },
             { path: '/urlDecodePage', component: urlDecodePage, name: 'URL_DECODE' },
             { path: '/htmlEncodePage', component: htmlEncodePage, name: 'HTML_ENCODE' },
+            { path: '/htmlDecodePage', component: htmlDecodePage, name: 'HTML_DECODE' },
+            { path: '/asciiPage', component: asciiPage, name: 'ASCII' },
+            { path: '/unicodePage', component: unicodePage, name: 'Unicode' },
         ]
     },
     {

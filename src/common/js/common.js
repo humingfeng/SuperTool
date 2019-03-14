@@ -157,3 +157,84 @@ export function nameCase(name) {
     }
     return str;
 }
+
+export function asciiEncode(value){
+
+  var a = new Ascii();
+
+  if(value != '') {
+
+    return a.encode(value);
+
+  }
+}
+export function asciiDecode(value){
+
+  var a = new Ascii();
+
+  if(value != '') {
+
+    return a.decode(value);
+
+  }
+}
+function Ascii() {
+  this.encode = function (content) {
+    let result = '';
+    for (var i = 0; i < content.length; i++)
+      result += '&#' + content.charCodeAt(i) + ';';
+    return result;
+  }
+  this.decode = function (content) {
+    let result = '';
+    var code = content.match(/&#(\d+);/g);
+    result = '';
+    for (var i = 0; i < code.length; i++)
+      result += String.fromCharCode(code[i].replace(/[&#;]/g, ''));
+    return result;
+  }
+}
+
+export function UnicodeEncode(value){
+
+  var a = new Unicode();
+
+  if(value != '') {
+
+    return a.encode(value);
+
+  }
+}
+export function UnicodeDecode(value){
+
+  var a = new Unicode();
+
+  if(value != '') {
+
+    return a.decode(value);
+
+  }
+}
+function Unicode() {
+  this.encode = function (str) {
+    var res = [];
+    for (var i = 0; i < str.length; i++)
+      res[i] = ("00" + str.charCodeAt(i).toString(16)).slice(-4);
+    return "\\u" + res.join("\\u");
+  }
+  this.decode = function (str) {
+    str = str.replace(/\\/g, "%");
+    return unescape(str);
+  }
+}
+
+export function htmlencode(s) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(s));
+  return div.innerHTML;
+}
+export function htmldecode(s) {
+  var div = document.createElement('div');
+  div.innerHTML = s;
+  return div.innerText || div.textContent;
+}

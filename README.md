@@ -7,6 +7,17 @@
 
 |服务名 | 依赖 | 模块说明|
 |----|----|----        |
+|实体生成|开发工具|用于流行数据格式转换成实体类     |
+|JSON生成实体|实体生成|json格式数据转换成java和C#等实体类     |
+|String生成实体|实体生成|String格式数据转换成java和C#等实体类     |
+|XML生成实体|实体生成|XML格式数据转换成java和C#等实体类     |
+|编码转换|开发工具|常见编码转换解码等     |
+|URL_ENCODE|编码转换|URL的编码    |
+|URL_DECODE|编码转换|URL的解码    |
+|HTML_ENCODE|编码转换|HTML的编码    |
+|HTML_DECODE|编码转换|HTML的解码    |
+|ASCII|编码转换|ASCII的编码解码    |
+|Unicode|编码转换|Unicode的编码解码    |
 
 
 ---

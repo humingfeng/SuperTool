@@ -1,5 +1,9 @@
 <template>
   <div>
+    <el-radio-group v-model="radio" class="radio-change" v-on:change="changeRadio">
+      <el-radio-button label="encode">编码</el-radio-button>
+      <el-radio-button label="decode">解码</el-radio-button>
+    </el-radio-group>
     <el-row class="demo-autocomplete">
       <el-col :span="12">
         <el-input
@@ -25,15 +29,16 @@
 </template>
 
 <script>
-  import {htmlencode} from '../../common/js/common.js';
+  import {UnicodeEncode,UnicodeDecode} from '../../common/js/common.js';
   export default {
-    name: "htmlEncodePage",
+    name: "unicodePage",
     data() {
       return {
         restaurants: [],
         state1: '',
         textarea1: '',
         textarea2: '',
+        radio: 'encode'
       };
     },
     methods: {
@@ -47,7 +52,22 @@
       },
       changeJson() {
         if(this.textarea1 != '') {
-          this.textarea2 = htmlencode(this.textarea1);
+          if (this.radio == "encode") {
+            this.textarea2 = UnicodeEncode(this.textarea1);
+          }else if (this.radio == "decode") {
+            this.textarea2 = UnicodeDecode(this.textarea1);
+          }
+        }else {
+          this.textarea2 = "";
+        }
+      },
+      changeRadio() {
+        if(this.textarea1 != '') {
+          if (this.radio == "encode") {
+            this.textarea2 = UnicodeEncode(this.textarea1);
+          }else if (this.radio == "decode") {
+            this.textarea2 = UnicodeDecode(this.textarea1);
+          }
         }else {
           this.textarea2 = "";
         }
