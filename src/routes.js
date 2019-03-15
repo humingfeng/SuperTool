@@ -11,6 +11,8 @@ import htmlEncodePage from './views/encode/htmlEncodePage.vue'
 import htmlDecodePage from './views/encode/htmlDecodePage.vue'
 import asciiPage from './views/encode/asciiPage.vue'
 import unicodePage from './views/encode/unicodePage.vue'
+import developLogPage from './views/about/developLogPage.vue'
+import donationPage from './views/about/donationPage.vue'
 import Page6 from './views/nav3/Page6.vue'
 import echarts from './views/charts/echarts.vue'
 
@@ -27,7 +29,17 @@ let routes = [
         name: '',
         hidden: true
     },
-    //{ path: '/main', component: Main },
+    {
+      path: '/',
+      component: Home,
+      name: '关于',
+      index:'4',
+      iconCls: 'el-icon-message',//图标样式class
+      children: [
+        { path: '/developLogPage', component: developLogPage, name: '开发日志' ,isReadOnly: false},
+        { path: '/donationPage', component: donationPage, name: '赞助' ,isReadOnly: false}
+      ]
+    },
     {
         path: '/',
         component: Home,
@@ -61,6 +73,7 @@ let routes = [
         name: '',
         iconCls: 'fa fa-address-card',
         leaf: true,//只有一个节点
+        index:'5',
         children: [
             { path: '/jsonToJavaBean', component: Page6, name: '导航三' }
         ]
@@ -70,6 +83,7 @@ let routes = [
         component: Home,
         name: 'Charts',
         iconCls: 'fa fa-bar-chart',
+        index:'6',
         children: [
             { path: '/echarts', component: echarts, name: 'echarts' }
         ]

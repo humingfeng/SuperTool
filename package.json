@@ -16,7 +16,7 @@
     "nprogress": "^0.2.0",
     "vuex": "^2.0.0-rc.6",
     "ajv": "^6.9.1",
-    "element-ui": "^2.5.4",
+    "element-ui": "^2.6.0",
     "vue": "^2.2.2",
     "vue-router": "^2.3.0"
   },
