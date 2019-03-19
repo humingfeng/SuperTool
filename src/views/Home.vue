@@ -12,13 +12,6 @@
             <template slot="title">开发工具</template>
             <el-menu-item index="2-1">实体生成</el-menu-item>
             <el-menu-item index="2-2">编码转换</el-menu-item>
-            <el-menu-item index="2-3">选项3</el-menu-item>
-            <!--<el-submenu index="2-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="2-4-1">选项1</el-menu-item>
-              <el-menu-item index="2-4-2">选项2</el-menu-item>
-              <el-menu-item index="2-4-3">选项3</el-menu-item>
-            </el-submenu>-->
           </el-submenu>
           <el-menu-item router index="4">关于</el-menu-item>
           <!--<el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>-->
