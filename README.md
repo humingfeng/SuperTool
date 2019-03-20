@@ -18,6 +18,7 @@
 |HTML_DECODE|编码转换|HTML的解码    |
 |ASCII|编码转换|ASCII的编码解码    |
 |Unicode|编码转换|Unicode的编码解码    |
+|Morse|极客工具|摩斯密码编码    |
 
 
 ---

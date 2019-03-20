@@ -13,7 +13,8 @@ import asciiPage from './views/encode/asciiPage.vue'
 import unicodePage from './views/encode/unicodePage.vue'
 import developLogPage from './views/about/developLogPage.vue'
 import donationPage from './views/about/donationPage.vue'
-import Page6 from './views/nav3/Page6.vue'
+import whoisquery from './views/whois/whoisquery.vue'
+import morse from './views/geek/morse.vue'
 import echarts from './views/charts/echarts.vue'
 
 let routes = [
@@ -33,7 +34,7 @@ let routes = [
       path: '/',
       component: Home,
       name: '关于',
-      index:'4',
+      index:'5',
       iconCls: 'el-icon-message',//图标样式class
       children: [
         { path: '/developLogPage', component: developLogPage, name: '开发日志' ,isReadOnly: false},
@@ -68,15 +69,26 @@ let routes = [
         ]
     },
     {
-        path: '/',
-        component: Home,
-        name: '',
-        iconCls: 'fa fa-address-card',
-        leaf: true,//只有一个节点
-        index:'5',
-        children: [
-            { path: '/jsonToJavaBean', component: Page6, name: '导航三' }
-        ]
+      path: '/',
+      component: Home,
+      name: '站长工具',
+      index:'3-2',
+      iconCls: 'fa fa-id-card-o',
+      leaf: true,//只有一个节点
+      children: [
+        { path: '/whoisquery', component: whoisquery, name: 'whois查询' },
+      ]
+    },
+    {
+      path: '/',
+      component: Home,
+      name: '极客工具',
+      index:'4-1',
+      iconCls: 'fa fa-id-card-o',
+      leaf: true,//只有一个节点
+      children: [
+        { path: '/morse', component: morse, name: '摩斯电码' },
+      ]
     },
     {
         path: '/',

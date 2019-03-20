@@ -13,8 +13,16 @@
             <el-menu-item index="2-1">实体生成</el-menu-item>
             <el-menu-item index="2-2">编码转换</el-menu-item>
           </el-submenu>
-          <el-menu-item router index="4">关于</el-menu-item>
-          <!--<el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>-->
+          <el-submenu index="3">
+            <template slot="title">站长工具</template>
+            <el-menu-item index="3-1" disabled>favicon在线制作</el-menu-item>
+            <el-menu-item index="3-2" disabled>whois查询</el-menu-item>
+          </el-submenu>
+          <el-submenu index="4">
+            <template slot="title">极客工具</template>
+            <el-menu-item index="4-1" >摩斯电码</el-menu-item>
+          </el-submenu>
+          <el-menu-item router index="5">关于</el-menu-item>
         </el-menu>
 			</el-col>
 		</el-col>
