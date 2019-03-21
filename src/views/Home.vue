@@ -75,7 +75,7 @@
 		data() {
 			return {
 				sysName:'SuperTool',
-        initPath:'2-1',
+        initPath:'1',
         isCollapse: false,
 				sysUserName: '',
 				sysUserAvatar: '',

@@ -31,18 +31,29 @@ let routes = [
         hidden: true
     },
     {
-      path: '/',
+      path: '/home',
       component: Home,
       name: '关于',
       index:'5',
-      iconCls: 'el-icon-message',//图标样式class
+      iconCls: 'el-icon-info',//图标样式class
       children: [
         { path: '/developLogPage', component: developLogPage, name: '开发日志' ,isReadOnly: false},
         { path: '/donationPage', component: donationPage, name: '赞助' ,isReadOnly: false}
       ]
     },
     {
-        path: '/',
+      path: '/home',
+      component: Home,
+      name: '首页',
+      index:'1',
+      iconCls: 'el-icon-star-off',
+      leaf: true,//只有一个节点
+      children: [
+        { path: '/Main', component: Main, name: '首页' },
+      ]
+    },
+    {
+        path: '/home',
         component: Home,
         name: '实体生成',
         index:'2-1',
@@ -54,7 +65,7 @@ let routes = [
         ]
     },
     {
-        path: '/',
+        path: '/home',
         component: Home,
         name: '编码转换',
         index:'2-2',
@@ -69,7 +80,7 @@ let routes = [
         ]
     },
     {
-      path: '/',
+      path: '/home',
       component: Home,
       name: '站长工具',
       index:'3-2',
@@ -80,7 +91,7 @@ let routes = [
       ]
     },
     {
-      path: '/',
+      path: '/home',
       component: Home,
       name: '极客工具',
       index:'4-1',
@@ -91,7 +102,7 @@ let routes = [
       ]
     },
     {
-        path: '/',
+        path: '/home',
         component: Home,
         name: 'Charts',
         iconCls: 'fa fa-bar-chart',
@@ -104,6 +115,11 @@ let routes = [
         path: '*',
         hidden: true,
         redirect: { path: '/404' }
+    },
+    {
+      path: '/',
+      hidden: true,
+      redirect: { path: '/Main' }
     }
 ];
 
