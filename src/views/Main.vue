@@ -23,13 +23,13 @@
       </el-col>
     </el-row>
   </section>
-  <remote-js src="http://pv.sohu.com/cityjson?ie=utf-8"></remote-js>
+<!--  <remote-js src="http://pv.sohu.com/cityjson?ie=utf-8"></remote-js>-->
   </div>
 </template>
 
 <script>
   import echarts from 'echarts'
-
+  import returnCitySN from 'returnCitySN'
   export default {
     data() {
       return {
@@ -42,7 +42,7 @@
         IPPlace:""
       }
     },
-    components:{
+   /* components:{
       'remote-js': {
         render(createElement) {
           return createElement('script', { attrs: { type: 'text/javascript', src: this.src }});
@@ -51,7 +51,7 @@
           src: { type: String, required: true },
         },
       }
-    },
+    },*/
     methods: {
       drawColumnChart() {
         this.chartColumn = echarts.init(document.getElementById('chartColumn'));

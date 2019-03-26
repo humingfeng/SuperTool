@@ -1,6 +1,12 @@
 <template>
   <div class="block">
     <el-timeline>
+      <el-timeline-item timestamp="2018/3/22" placement="top">
+        <el-card>
+          <h4>增加首页内容以及宽带检测和IP显示</h4>
+          <p>胡铭锋 提交于 2018/3/22 22:50</p>
+        </el-card>
+      </el-timeline-item>
       <el-timeline-item timestamp="2018/3/15" placement="top">
         <el-card>
           <h4>增加开发日志</h4>

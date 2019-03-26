@@ -8,6 +8,7 @@ function resolve(dir) {
 }
 
 module.exports = {
+  context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'
   },
@@ -25,6 +26,9 @@ module.exports = {
       '@': resolve('src'),
       'scss_vars': '@/styles/vars.scss'
     }
+  },
+  externals: {
+    "returnCitySN": "returnCitySN"
   },
   module: {
     rules: [
